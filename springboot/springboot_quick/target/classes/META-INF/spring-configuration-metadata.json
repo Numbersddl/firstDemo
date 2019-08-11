@@ -1,0 +1,22 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.itheima.controller.QuickController",
+      "name": "person",
+      "type": "com.itheima.controller.QuickController"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.itheima.controller.QuickController",
+      "name": "person.age",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.itheima.controller.QuickController",
+      "name": "person.name",
+      "type": "java.lang.String"
+    }
+  ]
+}

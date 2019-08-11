@@ -1,0 +1,32 @@
+//普通配置
+name: zhangsan
+
+//对象配置
+#person:
+#  name: zhangsan
+#  age: 18
+#  address: zhuhai
+#
+#server:
+#  port: 8080
+
+//行内对象
+#server: {port: 8080, address: 9999}
+
+//配置数据 集合
+city:
+  - beijing
+  - tianjing
+  - guangzhou
+  - fujian
+
+#city: {beijing,tianjin,fujian,guangzhou}
+
+#student:
+#  - name: zhangsan
+#    age: 18
+#  - name : lisi
+#    age: 18
+
+person: [{name: zhangsan,age: 18}]
+

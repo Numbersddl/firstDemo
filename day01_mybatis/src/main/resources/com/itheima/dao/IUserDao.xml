@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.IUserDao">
+
+    <!-- 配置 查询结果的列名和实体类的属性名的对应关系 -->
+    <resultMap id="userMap" type="com.itheima.domain.User">
+        <!--主键字段对应-->
+        <id property="id" column="id"></id>
+        <!--非主键-->
+        <result property="last_name" column="last_name"></result>
+        <result property="gender" column="gender"></result>
+        <result property="email" column="email"></result>
+    </resultMap>
+    <!-- SQL语句 -->
+    <!--resultType往哪个实例类封装-->
+    <select id="findAll" resultType="com.itheima.domain.User">
+        select * from tbl_employee;
+    </select>
+
+    <!--keyProperty实体类 keyColumn数据库 -->
+    <insert id="saveUser" parameterType="com.itheima.domain.User">
+        <selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+        insert into tbl_employee(id,last_name,gender,email) values (#{id},#{last_name},#{gender},#{email});
+    </insert>
+
+    <update id="updateUser" parameterType="com.itheima.domain.User">
+        update tbl_employee set last_name = #{last_name},gender=#{gender},email=#{email} where id = #{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from tbl_employee where id = #{userId}
+    </delete>
+
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.itheima.domain.User">
+        select * from tbl_employee where id = #{userId}
+    </select>
+
+    <select id="findByName" parameterType="string" resultType="com.itheima.domain.User">
+        select * from tbl_employee where last_name like #{last_name}
+    </select>
+
+    <select id="findTotal" resultType="java.lang.Integer">
+        select count(*) as count from tbl_employee
+    </select>
+
+    <select id="findUserByVo" parameterType="com.itheima.domain.QueryVo" resultType="com.itheima.domain.User">
+        select * from tbl_employee where last_name like #{user.last_name}
+    </select>
+
+    <select id="findByCondition" resultMap="userMap" resultType="com.itheima.domain.User">
+        select * from tbl_employee where 1=1
+        <if test="last_name != null">
+            and last_name like #{last_name}
+        </if>
+    </select>
+</mapper>

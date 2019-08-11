@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.IAccount">
+
+<!--    &lt;!&ndash; 配置 查询结果的列名和实体类的属性名的对应关系 &ndash;&gt;-->
+<!--    <resultMap id="userMap" type="com.itheima.domain.User">-->
+<!--        &lt;!&ndash;主键字段对应&ndash;&gt;-->
+<!--        <id property="id" column="id"></id>-->
+<!--        &lt;!&ndash;非主键&ndash;&gt;-->
+<!--        <result property="last_name" column="last_name"></result>-->
+<!--        <result property="gender" column="gender"></result>-->
+<!--        <result property="email" column="email"></result>-->
+<!--    </resultMap>-->
+
+    <select id="findAll1" resultType="account">
+        select * from account
+    </select>
+
+</mapper>
